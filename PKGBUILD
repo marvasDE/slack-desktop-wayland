@@ -2,7 +2,7 @@
 
 pkgname=slack-desktop-wayland
 _original_pkgname=slack-desktop
-pkgver=4.32.122
+pkgver=4.34.121
 pkgrel=1
 pkgdesc="Slack Desktop (Beta) for Linux with Wayland Support"
 arch=('x86_64')
@@ -20,26 +20,26 @@ optdepends=('libappindicator-gtk3: Systray indicator support'
 source=("https://downloads.slack-edge.com/releases/linux/${pkgver}/prod/x64/${_original_pkgname}-${pkgver}-amd64.deb"
 "${_original_pkgname}.patch")
 noextract=("${_original_pkgname}-${pkgver}-amd64.deb")
-b2sums=('05d87f36c2c98fd6fc0e1e105f5aa9345fcba7ac2e976decc908dc5ddc71a16b5641b59384d31fceaacf9d3c313dc566d388ff0b7a3cd2aa5a61e20465dc161e'
+b2sums=('b0e0a5466e250066bfb1768086ca4d62d16fad3e9b9fff744ff7adf01b751422860d2f4499a3069e97cbf7e5409b73abb4963548368fc058384b1ea47723607e'
         '556dfdffabf790b100813bb0ff34ee48e5ec0a9e40b701f52bc8dc2bcd82f1e7701877798e6764f12a611bdc33dfeca8af63915dd713d75bb7fef9e5aac053fe')
 provides=('slack-desktop')
 conflicts=('slack-desktop' 'slack-electron')
 
 package() {
     bsdtar -O -xf "slack-desktop-${pkgver}"*.deb data.tar.xz | bsdtar -C "${pkgdir}" -xJf -
-    
+
     # Fix hardcoded icon path in .desktop file
     patch -d "${pkgdir}" -p1 <"${_original_pkgname}".patch
-    
+
     # Permission fix
     find "${pkgdir}" -type d -exec chmod 755 {} +
-    
+
     # Remove all unnecessary stuff
     rm -rf "${pkgdir}/etc"
     rm -rf "${pkgdir}/usr/lib/slack/src"
     rm -rf "${pkgdir}/usr/share/lintian"
     rm -rf "${pkgdir}/usr/share/doc"
-    
+
     # Move license
     install -dm755 "${pkgdir}/usr/share/licenses/${_original_pkgname}"
     mv "${pkgdir}/usr/lib/slack/LICENSE" "${pkgdir}/usr/share/licenses/${_original_pkgname}"
