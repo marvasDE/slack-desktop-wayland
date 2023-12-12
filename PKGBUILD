@@ -2,7 +2,7 @@
 
 pkgname=slack-desktop-wayland
 _original_pkgname=slack-desktop
-pkgver=4.35.131
+pkgver=4.36.134
 pkgrel=1
 pkgdesc="Slack Desktop (Beta) for Linux with Wayland Support"
 arch=('x86_64')
@@ -20,7 +20,7 @@ optdepends=('libappindicator-gtk3: Systray indicator support'
 source=("https://downloads.slack-edge.com/releases/linux/${pkgver}/prod/x64/${_original_pkgname}-${pkgver}-amd64.deb"
 "${_original_pkgname}.patch")
 noextract=("${_original_pkgname}-${pkgver}-amd64.deb")
-b2sums=('9527c7ee4ac8f88dc6b38a30e3d0fc4759a9e57ef6966ee5059988bb8f0462e769a36efa90d4ad56725f5e0aeb5d0c4cd238d36b6913503877a40ac89d25f9b4'
+b2sums=('d24e5ad17c4a340bf57c341e67f31d515cc516277fab021e9a7dd2deea02464230aacb72dff56af971df2f5d08ba2881694a9faa559a70bb53ad7d3edb944a1f'
         '556dfdffabf790b100813bb0ff34ee48e5ec0a9e40b701f52bc8dc2bcd82f1e7701877798e6764f12a611bdc33dfeca8af63915dd713d75bb7fef9e5aac053fe')
 provides=('slack-desktop')
 conflicts=('slack-desktop' 'slack-electron')
