@@ -1,7 +1,7 @@
 #!/bin/sh -eu
 SLACK_APP_PATH="${SLACK_APP_PATH:-/usr/lib/slack/app.asar}"
 SLACK_ELECTRON_EXEC="${SLACK_ELECTRON_EXEC:-electron}"
-SLACK_WAYLAND_FLAGS="${SLACK_WAYLAND_FLAGS:---enable-features=UseOzonePlatform --ozone-platform=wayland --enable-features=WebRTCPipeWireCapturer --enable-features=WaylandWindowDecorations}"
+SLACK_WAYLAND_FLAGS="${SLACK_WAYLAND_FLAGS:---disable-gpu-compositing --enable-features=UseOzonePlatform --ozone-platform=wayland --enable-features=WebRTCPipeWireCapturer --enable-features=WaylandWindowDecorations}"
 
 if pgrep -f "slack/app.asar" > /dev/null
 then
